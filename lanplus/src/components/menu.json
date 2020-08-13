@@ -1,0 +1,141 @@
+[{
+    "entity": {
+        "id": 0,
+        "name": "VidP",
+        "icon": "el-icon-view",
+        "alias": "实时预览",
+        "value": "/vidpvideopreview",
+        "disabled": false
+    }
+},
+{
+    "entity": {
+        "id": 3,
+        "name": "MaM",
+        "icon": "el-icon-user",
+        "alias": "人事管理",
+        "disabled": false
+    },
+    "childs": [{
+            "entity": {
+                "id": 4,
+                "name": "MaM_manmessage",
+                "alias": "人员信息",
+                "disabled": false
+            },
+            "childs":[{
+                "entity": {
+                    "id": 23,
+                    "name": "MaM_manmessage",
+                    "alias": "内部人员",
+                    "value": "/mammanmessage",
+                    "disabled": false
+                }
+            },
+            {
+                "entity": {
+                    "id": 25,
+                    "name": "MaM_visitormanmessage",
+                    "alias": "访客人员",
+                    "value": "/visitormessage",
+                    "disabled": false
+                }
+            }
+        ]
+
+        },
+        {
+            "entity": {
+                "id": 6,
+                "name": "MaM_company",
+                "alias": "企业信息",
+                "value": "/mamcompany",
+                "disabled": false,
+                "isAdmin": true
+            }
+        }
+    ]
+},
+{
+    "entity": {
+        "id": 7,
+        "name": "EqM_eqmessage",
+        "icon": "el-icon-video-camera",
+        "alias": "设备管理",
+        "value": "/eqmeqmessage",
+        "disabled": false
+    }
+},
+{
+    "entity": {
+        "id": 8,
+        "name": "MqL",
+        "icon": "el-icon-setting",
+        "alias": "设备配置",
+        "value": "/eqleqlayout",
+        "disabled": false,
+        "isWrite": true
+    }
+},
+{
+    "entity": {
+        "id": 13,
+        "name": "DaM",
+        "icon": "el-icon-data-line",
+        "alias": "数据管理",
+        "disabled": false
+    },
+    "childs": [{
+            "entity": {
+                "id": 14,
+                "name": "DaM_record",
+                "alias": "识别记录",
+                "value": "/damrecord",
+                "disabled": false
+            }
+        },
+        {
+            "entity": {
+                "id": 15,
+                "name": "DaM_log",
+                "alias": "操作日志",
+                "value": "/damlog",
+                "disabled": false,
+                "isAdmin": true
+            }
+        }
+    ]
+},
+{
+    "entity": {
+        "id": 16,
+        "name": "DaF_datafrom",
+        "icon": "el-icon-pie-chart",
+        "alias": "数据分析",
+        "value": "/dafdatafrom",
+        "disabled": false
+    }
+},
+{
+    "entity": {
+        "id": 17,
+        "name": "Sys_sysconfig",
+        "icon": "el-icon-set-up",
+        "alias": "系统设置",
+        "value": "/sysconfig",
+        "disabled": false,
+        "isWrite": true
+    }
+},
+{
+   "entity": {
+       "id": 18,
+       "name": "MeetingManage",
+       "icon": "el-icon-video-camera",
+       "alias": "会议管理",
+       "value": "/Meeting",
+       "disabled": false,
+       "isWrite": true
+    }
+}
+]

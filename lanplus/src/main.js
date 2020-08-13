@@ -1,0 +1,133 @@
+/*
+ * @Author: Gordon
+ * @Date: 2020-03-09 09:13:54
+ * @LastEditTime: 2020-04-08 21:46:39
+ * @LastEditors: Gordon
+ * @FilePath: \lanplus\src\main.js
+ */
+import Vue from 'vue'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import App from './App.vue'
+import router from './router'
+import Fragment from 'vue-fragment'
+// import ECharts from 'vue-echarts/components/ECharts'
+// import './plugins/element.js'
+
+// storage工具类，简单的封装
+import Storage from './plugins/storage.js'
+
+// 导入字体图标
+// import './assets/fonts/iconfont.css'
+import './assets/icon/iconfont.css'
+// 导入全局样式表
+// import './assets/css/global.css'
+import './assets/css/global.less'
+// 导入进度条
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import axios from 'axios'
+import echarts from 'echarts'
+
+import { message } from './plugins/resetMessage.js'
+
+import configGd from './config/config'
+Vue.prototype.configGd = configGd
+
+// import Com from './com/com'
+// Vue.prototype.Com = Com;
+
+// 简单配置
+NProgress.configure({
+  easing: 'ease',
+  speed: 500,
+  showSpinner: false
+})
+// NProgress.inc(0.2)
+
+// var areAdmin = JSON.parse(sessionStorage.getItem("isAdmin"))
+router.beforeEach((to, from, next) => {
+  // console.log('beforeEach:', to.path)
+  // if (areAdmin == "0") {
+  //     document.getElementsByClassName('el-submenu')[0].style.display = "none"
+  //     document.getElementsByClassName('el-submenu')[1].style.display = "none"
+  // }
+  // if (to.path == '/projectcomputeGeneral' && areAdmin == '0') {
+  //     next()
+  // } else {
+  // 在 request 拦截器中，展示进度条 NProgress.start()
+  axios.interceptors.request.use(config => {
+    NProgress.start()
+    // console.log('request config.data:', config.data)
+    // sessionStorage.setItem('token', token)
+    let token = Storage.localGet('token')
+    if (token) {
+      token = token.replace(/'|"/g, '') // 把token加入到默认请求参数中
+      config.headers.common['token'] = token
+      // token = 'bearer' + ' ' + token // 把token加入到默认请求参数中
+      // config.headers.common['Authorization'] = token
+      // axios.defaults.headers.common["token"] = token
+    }
+    config.headers.common['Content-Type'] = 'application/json'
+    config.headers.common['X-Frame-Options'] = 'SAMEORIGIN'
+    // response.setHeader("X-Frame-Options", "SAMEORIGIN");
+    return config
+  }, function(error) {
+    return Promise.reject(error)
+  })
+  // 在 response 拦截器中，隐藏进度条 NProgress.done()
+  axios.interceptors.response.use(config => {
+    var body = document.body
+    body.style.overflow = 'visible'
+
+    NProgress.done()
+    // console.log('response config.data:', config.data)
+    if (config.data.code === 401 || config.data.code === 10010 || config.data.code === 10011) {
+      Vue.prototype.$message.error('用户验证失效，请重新登录！')
+      Storage.localRemove('token') // 删除已经失效或过期的token（不删除也可以，因为登录后覆盖）
+      // console('router', router)
+      router.replace({
+        path: '/login' // 到登录页重新获取token
+      })
+    } else if (config.data.code !== 0) {
+      // let myerrmsg = config.data.message
+      if (config.data.data) {
+        // myerrmsg = config.data.data
+        config.data.message = config.data.data
+      }
+      // Vue.prototype.$message.error('main.js ' + myerrmsg)
+    } else if (config.data.token) { // 判断token是否存在，如果存在说明需要更新token
+      Storage.localSet('token', config.data.token) // 覆盖原来的token(默认一天刷新一次)
+      // console.log('response Storage.localGet A:', Storage.localGet('token'))
+    } else if (config.data.data && config.data.data.token) { // 判断token是否存在，如果存在说明需要更新token
+      Storage.localSet('token', config.data.data.token) // 覆盖原来的token(默认一天刷新一次)
+      // console.log('response Storage.localGet B:', Storage.localGet('token'))
+    }
+    return config
+  }, function(error) {
+    return Promise.reject(error)
+  })
+  next()
+  // }
+  if (to.meta) {
+    document.title = configGd.apptitle + '-' + to.meta[to.meta.length - 1].name
+  } else {
+    document.title = configGd.apptitle
+  }
+})
+Vue.prototype.$http = axios
+Vue.prototype.$Storage = Storage
+Vue.prototype.$echarts = echarts
+Vue.config.productionTip = false
+// window.onresize = function() {
+//     console.log(123)
+// }
+
+Vue.use(ElementUI)
+Vue.use(Fragment.Plugin)
+Vue.prototype.$message = message
+
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')

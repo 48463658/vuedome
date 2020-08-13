@@ -1,0 +1,91 @@
+import Vue from 'vue'
+import {
+    Button,
+    Form,
+    FormItem,
+    Input,
+    Message,
+    Notification,
+    Table,
+    TableColumn,
+    Container,
+    Aside,
+    Main,
+    Header,
+    Menu,
+    Submenu,
+    MenuItemGroup,
+    MenuItem,
+    Breadcrumb,
+    BreadcrumbItem,
+    Card,
+    Row,
+    Col,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    Dialog,
+    Checkbox,
+    Select,
+    Option,
+    MessageBox,
+    Pagination,
+    Tag,
+    RadioGroup,
+    RadioButton,
+    TabPane,
+    Tabs,
+    Switch,
+    InputNumber,
+    Popover,
+    Footer,
+    Cascader,
+    DatePicker,
+    Upload,
+    TimePicker
+} from 'element-ui'
+
+
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Notification)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Container)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.use(Header)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItemGroup)
+Vue.use(MenuItem)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Dropdown)
+Vue.use(DropdownItem)
+Vue.use(DropdownMenu)
+Vue.use(Dialog)
+Vue.use(Checkbox)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Pagination)
+Vue.use(Tag)
+Vue.use(RadioButton)
+Vue.use(RadioGroup)
+Vue.use(TabPane)
+Vue.use(Tabs)
+Vue.use(Switch)
+Vue.use(InputNumber)
+Vue.use(Popover)
+Vue.use(Footer)
+Vue.use(Cascader)
+Vue.use(DatePicker)
+Vue.use(Upload)
+Vue.use(TimePicker)
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm

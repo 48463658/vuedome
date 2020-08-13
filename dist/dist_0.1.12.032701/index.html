@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><title>lanpu</title><link href=/css/app.734c0ec3.css rel=preload as=style><link href=/css/chunk-vendors.32077042.css rel=preload as=style><link href=/js/app.da09783a.js rel=preload as=script><link href=/js/chunk-vendors.9280602e.js rel=preload as=script><link href=/css/chunk-vendors.32077042.css rel=stylesheet><link href=/css/app.734c0ec3.css rel=stylesheet></head><body><noscript><strong>We're sorry but lanpu doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.9280602e.js></script><script src=/js/app.da09783a.js></script></body></html><script>// 设置rem
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth > 640) clientWidth = 640;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window)</script>

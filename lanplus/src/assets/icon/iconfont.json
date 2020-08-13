@@ -1,0 +1,72 @@
+{
+  "id": "1847088",
+  "name": "icolanplus",
+  "font_family": "gdiconfont",
+  "css_prefix_text": "gdicon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7359141",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e755",
+      "unicode_decimal": 59221
+    },
+    {
+      "icon_id": "6672139",
+      "name": "男",
+      "font_class": "nan1",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
+    },
+    {
+      "icon_id": "12810511",
+      "name": "女",
+      "font_class": "nv1",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    },
+    {
+      "icon_id": "8176994",
+      "name": "温度",
+      "font_class": "wendu",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "9351224",
+      "name": "酒精度",
+      "font_class": "jiujingdu",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "1727458",
+      "name": "224用户-线性",
+      "font_class": "yonghu-xianxing",
+      "unicode": "e8c8",
+      "unicode_decimal": 59592
+    },
+    {
+      "icon_id": "1727459",
+      "name": "224用户",
+      "font_class": "yonghu",
+      "unicode": "e8c9",
+      "unicode_decimal": 59593
+    },
+    {
+      "icon_id": "7008959",
+      "name": "lock_fill",
+      "font_class": "lock_fill",
+      "unicode": "e709",
+      "unicode_decimal": 59145
+    },
+    {
+      "icon_id": "7008960",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e70a",
+      "unicode_decimal": 59146
+    }
+  ]
+}
